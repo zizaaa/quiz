@@ -203,6 +203,8 @@ let userAnswer =[];
 const saveAnswer=(e)=>{
     let value = e.target.value
     let answerNumber = e.target.name
+    console.log(e.target.value);
+    console.log(e.target.name);
     userAnswer.push({"number":answerNumber,"answer":value})
 
     filteredAnswer = [...new Map(userAnswer.map(ans =>[ans.number,ans])).values()];
@@ -213,14 +215,20 @@ const saveAnswer=(e)=>{
     localStorage.setItem("answer",JSON.stringify(filteredAnswer));
 }
 
-const checkBtn=(e)=>{
-    const target = e.target.parentElement.firstChild;
-    if (target.tagName === 'INPUT') {
-        target.checked = !target.checked;
-        //change bg color if already answered the questions
-        document.getElementById(`${target.name}`).style = 'background-color: green; color: white;';
-    }
-}
+// const checkBtn=(e)=>{
+//     const target = e.target.parentElement.firstChild;
+//     if (target.tagName === 'INPUT') {
+//         let value = target.value;
+//         let answerNumber = target.number;
+
+//         userAnswer.push({"number":answerNumber,"answer":value})
+//         filteredAnswer = [...new Map(userAnswer.map(ans =>[ans.number,ans])).values()];
+//         target.checked = !target.checked;
+//         //change bg color if already answered the questions
+//         document.getElementById(`${target.name}`).style = 'background-color: green; color: white;';
+
+//     }
+// }
 
 
 const questionsContainer = document.getElementById("questionsContainer");
@@ -244,7 +252,7 @@ questions.forEach((question)=>{
 
     const choiceContainer_1 = document.createElement('div');
     choiceContainer_1.classList.add('choiceContainer');
-    choiceContainer_1.onclick = checkBtn;
+    // choiceContainer_1.onclick = checkBtn;
     const inputOne = document.createElement('input');
     inputOne.setAttribute("type","radio");
     inputOne.setAttribute("name",question.questionNumber);
@@ -258,7 +266,7 @@ questions.forEach((question)=>{
 
     const choiceContainer_2 = document.createElement('div');
     choiceContainer_2.classList.add('choiceContainer');
-    choiceContainer_2.onclick = checkBtn;
+    // choiceContainer_2.onclick = checkBtn;
     const inputTwo = document.createElement('input');
     inputTwo.setAttribute("type","radio");
     inputTwo.setAttribute("name",question.questionNumber);
@@ -272,7 +280,7 @@ questions.forEach((question)=>{
 
     const choiceContainer_3 = document.createElement('div');
     choiceContainer_3.classList.add('choiceContainer');
-    choiceContainer_3.onclick = checkBtn;
+    // choiceContainer_3.onclick = checkBtn;
     const inputThree = document.createElement('input');
     inputThree.setAttribute("type","radio");
     inputThree.setAttribute("name",question.questionNumber);
@@ -286,7 +294,7 @@ questions.forEach((question)=>{
 
     const choiceContainer_4 = document.createElement('div');
     choiceContainer_4.classList.add('choiceContainer');
-    choiceContainer_4.onclick = checkBtn;
+    // choiceContainer_4.onclick = checkBtn;
     const inputFour = document.createElement('input');
     inputFour.setAttribute("type","radio");
     inputFour.setAttribute("name",question.questionNumber);
