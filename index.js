@@ -8,7 +8,8 @@ const questions = [
             "c": "c. Interpreter",
             "d": "d. Microcontroller"
         },
-        "correctAnswer": "b"
+        "correctAnswer": "b",
+        "id":"question_1"
     },
     {
         "questionNumber": 2,
@@ -20,6 +21,8 @@ const questions = [
             "d": "d. PHP"
         },
         "correctAnswer": "c"
+        ,
+        "id":"question_2"
     },
     {
         "questionNumber": 3,
@@ -30,7 +33,8 @@ const questions = [
             "c": "c. Users",
             "d": "d. Programmers"
         },
-        "correctAnswer": "c"
+        "correctAnswer": "c",
+        "id":"question_3"
     },
     {
         "questionNumber": 4,
@@ -41,7 +45,8 @@ const questions = [
             "c": "c. high level language",
             "d": "d. assembly language"
         },
-        "correctAnswer": "c"
+        "correctAnswer": "c",
+        "id":"question_4"
     },
     {
         "questionNumber": 5,
@@ -52,7 +57,8 @@ const questions = [
             "c": "c. input device",
             "d": "d. memory unit"
         },
-        "correctAnswer": "d"
+        "correctAnswer": "d",
+        "id":"question_5"
     },
     {
         "questionNumber": 6,
@@ -63,7 +69,8 @@ const questions = [
             "c":"c. JAVA",
             "d":"d. structural language"
         },
-        "correctAnswer": "a"
+        "correctAnswer": "a",
+        "id":"question_5"
     },
     {
         "questionNumber": 7,
@@ -74,7 +81,8 @@ const questions = [
             "c": "c. Binary",
             "d": "d. Octal"
         },
-        "correctAnswer": "a"
+        "correctAnswer": "a",
+        "id":"question_7"
     },
     {
         "questionNumber": 8,
@@ -85,7 +93,8 @@ const questions = [
             "c": "c. File package",
             "d": "d. Utility Software"
         },
-        "correctAnswer": "a"
+        "correctAnswer": "a",
+        "id":"question_8"
     },
     {
         "questionNumber": 9,
@@ -96,7 +105,8 @@ const questions = [
             "c": "c. Application Software",
             "d": "d. Synchronous Software"
         },
-        "correctAnswer": "c"
+        "correctAnswer": "c",
+        "id":"question_9"
     },
     {
         "questionNumber": 10,
@@ -107,7 +117,8 @@ const questions = [
             "c": "c. Registers",
             "d": "d. Drives"
         },
-        "correctAnswer": "c"
+        "correctAnswer": "c",
+        "id":"question_10"
     },
     {
         "questionNumber": 11,
@@ -118,7 +129,8 @@ const questions = [
             "c": "c. Command",
             "d": "d. Task"
         },
-        "correctAnswer": "c"
+        "correctAnswer": "c",
+        "id":"question_11"
     },
     {
         "questionNumber": 12,
@@ -129,7 +141,8 @@ const questions = [
             "c": "c. machine code",
             "d": "d. user-friendly"
         },
-        "correctAnswer": "c"
+        "correctAnswer": "c",
+        "id":"question_12"
     },
     {
         "questionNumber": 13,
@@ -141,6 +154,8 @@ const questions = [
             "d": "d. Interpreter"
         },
         "correctAnswer": "d"
+        ,
+        "id":"question_13"
     },
     {
         "questionNumber": 14,
@@ -151,7 +166,8 @@ const questions = [
             "c": "c. Buying pre-written software",
             "d": "d. Ordering customized software"
         },
-        "correctAnswer": "a"
+        "correctAnswer": "a",
+        "id":"question_14"
     },
     {
         "questionNumber": 15,
@@ -162,7 +178,8 @@ const questions = [
             "c": "c. debugger",
             "d": "d. assembler"
         },
-        "correctAnswer": "d"
+        "correctAnswer": "d",
+        "id":"question_15"
     },
 ];
 
@@ -191,7 +208,7 @@ const saveAnswer=(e)=>{
     filteredAnswer = [...new Map(userAnswer.map(ans =>[ans.number,ans])).values()];
 
     //change bg color if already answered the questions
-    document.getElementById(`${e.target.name}`).style = 'background-color: gray; color: white;';
+    document.getElementById(`${e.target.name}`).style = 'background-color: green; color: white;';
 
     localStorage.setItem("answer",JSON.stringify(filteredAnswer));
 
@@ -203,7 +220,7 @@ const questionsContainer = document.getElementById("questionsContainer");
 questions.forEach((question)=>{
     const questionBox = document.createElement('div');
     questionBox.setAttribute("class","questionBox");
-    // questionBox.setAttribute("id",question.questionNumber);
+    questionBox.setAttribute("id",question.id);
 
     const numAndQues = document.createElement('div');
     numAndQues.setAttribute("class","numAndQues");
@@ -223,7 +240,7 @@ questions.forEach((question)=>{
     inputOne.setAttribute("value","a");
     inputOne.onclick = saveAnswer;
     const labelOne = document.createElement('label');
-    labelOne.setAttribute("for","choice");
+    labelOne.setAttribute("for",question.questionNumber);
     labelOne.innerText = question.choices.a
 
     const inputTwo = document.createElement('input');
@@ -232,7 +249,7 @@ questions.forEach((question)=>{
     inputTwo.setAttribute("value","b");
     inputTwo.onclick = saveAnswer;;
     const labelTwo = document.createElement('label');
-    labelTwo.setAttribute("for","choice");
+    labelTwo.setAttribute("for",question.questionNumber);
     labelTwo.innerText = question.choices.b
 
     const inputThree = document.createElement('input');
@@ -241,7 +258,7 @@ questions.forEach((question)=>{
     inputThree.setAttribute("value","c");
     inputThree.onclick = saveAnswer;;
     const labelThree = document.createElement('label');
-    labelThree.setAttribute("for","choice");
+    labelThree.setAttribute("for",question.questionNumber);
     labelThree.innerText = question.choices.c
 
     const inputFour = document.createElement('input');
@@ -250,7 +267,7 @@ questions.forEach((question)=>{
     inputFour.setAttribute("value","d");
     inputFour.onclick = saveAnswer;;
     const labelFour = document.createElement('label');
-    labelFour.setAttribute("for","choice");
+    labelFour.setAttribute("for",question.questionNumber);
     labelFour.innerText = question.choices.d
 
     questionBox.appendChild(numAndQues);
@@ -338,7 +355,7 @@ const checkAnswer = () =>{
 
 // countdown
 // Set the duration to 30 minutes (30 minutes * 60 seconds)
-let duration = 30 * 60;
+let duration = 15 * 60;
 
 // Function to start the countdown
 function startCountdown() {
@@ -360,6 +377,8 @@ function startCountdown() {
     // Check if the countdown is finished
     if (duration <= 0) {
         clearInterval(timer);
+        let alert = confirm('Sorry di ka umabot');
+        submit();
       // Perform any additional actions after the countdown finishes
     }
 
